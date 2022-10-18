@@ -1,34 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_func.c                                        :+:      :+:    :+:   */
+/*   stack_func1.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:42:49 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:42:49 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:42:59 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:42:59 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	push_b(t_stack *data)
-{
-	int	j;
-
-	j = 0;
-	if (data->a_len > 0)
-	{
-		data->b_len++;
-		data->b_s = push_down(data->b_s, data->b_len);
-		data->b_s[0] = data->a_s[0];
-		data->a_len--;
-		data->a_s = push_up(data->a_s, data->a_len);
-		write(1, "pb\n", 3);
-	}
-	else
-		return ;
-}
 
 void	push_a(t_stack *data)
 {
@@ -43,6 +25,24 @@ void	push_a(t_stack *data)
 		data->b_len--;
 		data->b_s = push_up(data->b_s, data->b_len);
 		write(1, "pa\n", 3);
+	}
+	else
+		return ;
+}
+
+void	push_b(t_stack *data)
+{
+	int	j;
+
+	j = 0;
+	if (data->a_len > 0)
+	{
+		data->b_len++;
+		data->b_s = push_down(data->b_s, data->b_len);
+		data->b_s[0] = data->a_s[0];
+		data->a_len--;
+		data->a_s = push_up(data->a_s, data->a_len);
+		write(1, "pb\n", 3);
 	}
 	else
 		return ;

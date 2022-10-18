@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:45:03 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:45:04 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:46:41 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:46:42 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,19 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	char	*str;
-	size_t	i;
-	size_t	len;
+	char	*string;
+	int		i;
 
-	if (!s)
-		return (NULL);
+	if (s == NULL)
+		return ((char *)s);
 	i = 0;
-	len = (ft_strlen)(s);
-	str = malloc(sizeof(char) * (len + 1));
-	if (!str)
+	string = ft_strdup(s);
+	if (string == NULL)
 		return (NULL);
-	while (s[i])
+	while (string[i])
 	{
-		str[i] = f(i, s[i]);
+		string[i] = f(i, string[i]);
 		i++;
 	}
-	str[i] = '\0';
-	return (str);
+	return (string);
 }

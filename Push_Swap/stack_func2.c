@@ -1,16 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_swap_func.c                                 :+:      :+:    :+:   */
+/*   stack_func2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:43:04 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:04 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:42:55 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:42:55 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	swap_a(t_stack *data)
+{
+	int	tmp;
+	int	i;
+
+	i = 0;
+	if (data->a_len >= 2)
+	{
+		tmp = data->a_s[i];
+		data->a_s[i] = data->a_s[i + 1];
+		data->a_s[i + 1] = tmp;
+		write(1, "sa\n", 3);
+	}
+	else
+		return ;
+}
+
+void	swap_b(t_stack *data)
+{
+	int	tmp;
+	int	i;
+
+	i = 0;
+	if (data->b_len >= 2)
+	{
+		tmp = data->b_s[i];
+		data->b_s[i] = data->b_s[i + 1];
+		data->b_s[i + 1] = tmp;
+		write(1, "sb\n", 3);
+	}
+	else
+		return ;
+}
 
 void	rotate_a(t_stack *data)
 {
@@ -47,60 +81,21 @@ void	rotate_b(t_stack *data)
 	write(1, "rb\n", 3);
 }
 
-void	rotate_r(t_stack *data)
+void	rev_rotate_a(t_stack *data)
 {
 	int	tmp;
 	int	i;
+	int	d;
 
 	i = data->a_len - 1;
-	while (i > 1)
+	d = data->a_s[i];
+	while (i > 0)
 	{
-	tmp = data->a_s[i];
-	data->a_s[i] = data->a_s[i - 1];
-	data->a_s[i - 1] = tmp;
-	i--;
+		tmp = data->a_s[i - 1];
+		data->a_s[i] = data->a_s[i - 1];
+		data->a_s[i] = tmp;
+		i--;
 	}
-	i = data->b_len - 1;
-	while (i > 1)
-	{
-	tmp = data->b_s[i];
-	data->b_s[i] = data->b_s[i - 1];
-	data->b_s[i - 1] = tmp;
-	i--;
-	}
-	write(1, "rr\n", 3);
-}
-
-void	swap_a(t_stack *data)
-{
-	int	tmp;
-	int	i;
-
-	i = 0;
-	if (data->a_len >= 2)
-	{
-		tmp = data->a_s[i];
-		data->a_s[i] = data->a_s[i + 1];
-		data->a_s[i + 1] = tmp;
-		write(1, "sa\n", 3);
-	}
-	else
-		return ;
-}
-
-void	swap_b(t_stack *data)
-{
-	int	tmp;
-	int	i;
-
-	i = 0;
-	if (data->b_len >= 2)
-	{
-		tmp = data->b_s[i];
-		data->b_s[i] = data->b_s[i + 1];
-		data->b_s[i + 1] = tmp;
-		write(1, "sb\n", 3);
-	}
-	else
-		return ;
+	data->a_s[0] = d;
+	write(1, "rra\n", 4);
 }

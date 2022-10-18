@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:44:30 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:44:32 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:45:54 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:45:55 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,14 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!s)
+	int	i;
+
+	if (s == NULL)
 		return ;
-	while (*s)
+	i = 0;
+	while (s[i])
 	{
-		write (fd, s, 1);
-		s++;
+		ft_putchar_fd(s[i], fd);
+		i++;
 	}
 }

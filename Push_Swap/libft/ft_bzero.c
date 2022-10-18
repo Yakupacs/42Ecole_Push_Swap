@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:43:36 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:38 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:43:40 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:43:42 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, 0, n);
+	ft_memset(s, '\0', n);
 }

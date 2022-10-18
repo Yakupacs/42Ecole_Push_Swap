@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:43:51 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:52 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:43:56 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:43:57 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,5 @@
 
 int	ft_isascii(int c)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	else
-		return (0);
+	return (c >= 0 && c <= 127);
 }

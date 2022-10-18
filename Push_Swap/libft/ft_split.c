@@ -5,62 +5,77 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:44:33 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:44:35 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:45:59 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:46:00 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	wordslength(char const *s, char c)
+int	ft_word_counter(char const *s, char c)
 {
-	size_t	letter;
+	int	i;
+	int	total;
 
-	letter = 0;
-	while (s[letter] && s[letter] != c)
-		letter++;
-	return (letter);
+	i = 0;
+	total = 0;
+	while (s[i])
+	{
+		while (s[i] == c && s[i])
+			i++;
+		if (s[i] != c && s[i])
+			total++;
+		while (s[i] != c && s[i])
+			i++;
+	}
+	return (total);
 }
 
-static size_t	words(char const *s, char c)
+int	ft_letter_counter(char const *s, char c)
 {
-	size_t	len;
+	int	i;
 
-	len = 0;
-	while (*s != '\0')
-	{
-		if (*s != c && (s[1] == '\0' || s[1] == c))
-			len++;
-		s++;
-	}
-	return (len);
+	i = 0;
+	while (s[i] != c && s[i])
+		i++;
+	return (i);
+}
+
+char	**ft_strclean(char **buff)
+{
+	int	j;
+
+	j = 0;
+	while (buff[j])
+		free(buff[j++]);
+	free(buff);
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**new;
+	char	**buff;
 	size_t	i;
-	size_t	j;
-	size_t	len;
 
-	if (!s)
-		return (NULL);
-	len = words(s, c);
-	new = malloc(sizeof(char *) * len + 1);
-	if (new == NULL)
-		return (NULL);
 	i = 0;
-	while (i < len)
+	if (!s)
+		return (0);
+	buff = (char **)malloc(sizeof(char *) * (ft_word_counter(s, c) + 1));
+	if (!buff)
+		return (0);
+	while (*s)
 	{
-		while (*s == c && *s != 0)
+		while (*s && *s == c)
 			s++;
-		new[i] = malloc(sizeof(char) * wordslength(s, c) + 1);
-		j = 0;
-		while (*s != c && *s != 0)
-			new[i][j++] = *s++;
-		new[i][j] = '\0';
-		i++;
+		if (*s != c && *s)
+		{
+			buff[i] = (char *)ft_substr(s, 0, ft_letter_counter(s, c));
+			if (!buff[i++])
+				return (ft_strclean(buff));
+		}
+		while (*s != c && *s)
+			s++;
 	}
-	new[i] = NULL;
-	return (new);
+	buff[i] = 0;
+	return (buff);
 }

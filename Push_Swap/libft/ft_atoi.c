@@ -5,38 +5,46 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:43:31 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:34 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:43:36 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:43:38 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+int	ft_limit(long result)
+{
+	if (result > __INT_MAX__)
+		return (-1);
+	else if (result < -__INT_MAX__ - 1)
+		return (0);
+	else
+		return (1);
+}
+
 int	ft_atoi(const char *str)
 {
-	int		i;
 	int		sign;
-	long	number;
+	long	result;
+	long	i;
 
 	sign = 1;
-	number = 0;
+	result = 0;
 	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	while (str[i] != '\0' && (str[i] == 32 || str[i] == '\t' || str[i] == '\n'
+			|| str[i] == '\r' || str[i] == '\v' || str[i] == '\f'))
 		i++;
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '+' || str[i] == '-')
 	{
 		if (str[i] == '-')
-			sign = -1;
+			sign = sign * (-1);
 		i++;
 	}
-	while (ft_isdigit(str[i]))
+	while (str[i] && (str[i] >= '0' && str[i] <= '9'))
 	{
-		number = (number * 10) + (str[i] - 48) * sign;
-		if (number > 2147483647)
-			return (-1);
-		if (number < -2147483648)
-			return (-1);
-		i++;
+		result = result * 10 + (str[i++] - '0');
+		if (ft_limit(sign * result) != 1)
+			return (ft_limit(sign * result));
 	}
-	return (number);
+	return (result * sign);
 }

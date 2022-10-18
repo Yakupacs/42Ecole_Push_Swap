@@ -5,53 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:44:00 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:44:02 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:44:07 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:44:43 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long	ft_len(long src)
+long	ft_number_length(long n)
 {
-	int	i;
+	long	size;
 
-	i = 0;
-	if (src == 0)
+	size = 0;
+	if (n == 0)
 		return (1);
-	if (src < 0)
-		i++;
-	while (src)
+	if (n < 0)
 	{
-		src /= 10;
-		i++;
+		size++;
+		n = -n;
 	}
-	return (i);
+	while (n != 0)
+	{
+		n /= 10;
+		size++;
+	}
+	return (size);
+}
+
+int	ft_sign(int n)
+{
+	if (n < 0)
+		return (1);
+	return (0);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		i;
-	long	num;
+	long	n_long;
+	long	length;
+	char	*value;
 
-	num = n;
-	i = ft_len(num);
-	str = malloc(i + 1);
-	if (!str)
+	n_long = n;
+	length = ft_number_length(n_long);
+	value = (char *)malloc(sizeof(char) * (length + 1));
+	if (value == NULL)
 		return (NULL);
-	if (n < 0)
+	value[length] = '\0';
+	length--;
+	if (n_long < 0)
+		n_long = -n_long;
+	while (length >= 0)
 	{
-		num *= -1;
-		str[0] = '-';
+		value[length] = (n_long % 10) + '0';
+		length--;
+		n_long /= 10;
 	}
-	str[i] = 0;
-	i--;
-	while (i >= (n < 0))
-	{
-		str[i] = (num % 10) + '0';
-		num /= 10;
-		i--;
-	}
-	return (str);
+	if (ft_sign(n) == 1)
+		value[0] = '-';
+	return (value);
 }

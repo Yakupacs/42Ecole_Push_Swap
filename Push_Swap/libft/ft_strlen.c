@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:45:00 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:45:01 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:46:38 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:46:39 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	i = 0;
-	while (s[i] != '\0')
+	while (s[i])
 		i++;
 	return (i);
 }

@@ -5,14 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:44:04 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:44:05 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:45:26 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:45:27 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t	n)
+/*
+-The memchr() function locates the first occurrence of c 
+ (converted to an unsigned char) in string s.
+-The memchr() function returns a pointer to the byte located, 
+ or NULL if no such byte exists within n bytes.
+*/
+void	*ft_memchr(const void *s, int c, size_t n)
 {
 	size_t	i;
 
@@ -20,8 +26,8 @@ void	*ft_memchr(const void *s, int c, size_t	n)
 	while (i < n)
 	{
 		if (*((unsigned char *)s + i) == (unsigned char)c)
-			return ((void *)(s + i));
+			return ((unsigned char *)s + i);
 		i++;
 	}
-	return (0);
+	return (NULL);
 }

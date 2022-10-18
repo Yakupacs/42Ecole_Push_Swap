@@ -5,20 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:43:40 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:41 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:43:44 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:43:45 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+//size: sizeof(int),sizeof(char) ...
 void	*ft_calloc(size_t count, size_t size)
 {
-	void	*str;
+	void	*ptr;
 
-	str = malloc(count * size);
-	if (!str)
+	ptr = malloc(count * size);
+	if (!ptr)
 		return (NULL);
-	ft_bzero(str, size * count);
-	return (str);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
+
+// #include <stdlib.h>
+// #include <stdio.h>
+// int main(void)
+// {
+//     int *a;
+//     int  i;
+//     a = (int *) ft_calloc(10, sizeof(int));
+//     for (i=0; i<10; i++) {
+//          *(a+i) = (i+1) * 5;
+//          printf("değer: %d\n", *(a+i));
+//     }
+//     free(a);
+// }

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:43:11 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:11 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:42:51 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:42:51 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	distribute_arg(t_stack *data)
 		five(data);
 	else if (data->ac == 4 || data->ac >= 6)
 	{
+		find_maxbit(data);
 		radix(data);
-		radix_2(data);
 	}
 	else
 		return ;
@@ -58,13 +58,13 @@ void	three(t_stack *data)
 
 void	five(t_stack *data)
 {
-	while (data->tmps[2] <= data->a_s[0])
+	while (data->sorted[2] <= data->a_s[0])
 		rotate_a(data);
-	if (data->tmps[2] > data->a_s[0])
+	if (data->sorted[2] > data->a_s[0])
 		push_b(data);
-	while (data->tmps[2] <= data->a_s[0])
+	while (data->sorted[2] <= data->a_s[0])
 		rotate_a(data);
-	if (data->tmps[2] > data->a_s[0])
+	if (data->sorted[2] > data->a_s[0])
 		push_b(data);
 	three(data);
 	if (data->b_s[1] > data->b_s[0])

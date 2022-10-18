@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:43:44 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:45 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:43:48 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:43:49 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_isalnum(int c)
 {
-	if (ft_isdigit(c) || ft_isalpha(c))
-		return (1);
-	return (0);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }

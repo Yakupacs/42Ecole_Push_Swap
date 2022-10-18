@@ -5,30 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:45:10 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:45:12 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:46:50 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:46:51 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t n)
-{
-	size_t	hay;
-	size_t	need;
+/*
+The strnstr() function locates the first occurrence of 
+the null-terminated string needle in the string haystack, where not 
+more than len characters are searched.
 
-	hay = 0;
-	if (*needle == 0)
+If needle is an empty string, haystack is returned.
+If needle occurs nowhere in haystack, NULL is returned.
+Otherwise a pointer to the first character of the first occurrence of 
+needle is returned.
+*/
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	size_t	h;
+	size_t	n;
+
+	if (needle[0] == '\0')
 		return ((char *)haystack);
-	while (haystack[hay] != 0 && hay < n)
+	h = 0;
+	while (haystack[h])
 	{
-		need = 0;
-		while (haystack[hay + need] == needle[need]
-			&& needle[need] && need + hay < n)
-			need++;
-		if (need == ft_strlen(needle))
-			return ((char *)&haystack[hay]);
-		hay++;
+		n = 0;
+		while (haystack[h + n] == needle[n] && (h + n) < len)
+		{
+			if (haystack[h + n] == '\0' && needle[n] == '\0')
+				return ((char *)&haystack[h]);
+			n++;
+		}
+		if (needle[n] == '\0')
+			return ((char *)&haystack[h]);
+		h++;
 	}
 	return (NULL);
 }

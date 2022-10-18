@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:45:26 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:45:27 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:47:07 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:47:08 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_toupper(int c)
 {
-	if ((c >= 'a') && (c <= 'z'))
-		c = c - 32;
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
 	return (c);
 }

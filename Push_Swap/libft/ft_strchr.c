@@ -5,25 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:44:37 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:44:38 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:46:02 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:46:03 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+/*
+-The strchr() function locates the first occurrence of c (converted to a char) 
+ in the string pointed to by s.  
+-The terminating null character is considered to be part of the string; 
+ therefore if c is `\0', the functions locate the terminating `\0'.
+*/
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 	{
-		if (str[i] == (char) c)
-			return ((char *)(str + i));
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
 		i++;
 	}
-	if (c == '\0')
-		return ((char *)(str + i));
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
 	return (NULL);
 }

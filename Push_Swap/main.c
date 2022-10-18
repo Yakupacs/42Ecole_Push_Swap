@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:42:43 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:50:58 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:43:13 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:43:13 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	argv_control(char **str)
 	while (str[i])
 	{
 		if (!ft_strlen(str[i]) || !space_null_control(str[i]))
-			exit(1);
+			exit(EXIT_FAILURE);
 		j = 0;
 		count = 0;
 		while (str[i][j])
@@ -32,7 +32,7 @@ void	argv_control(char **str)
 			j++;
 		}
 		if (count == 0)
-			error1();
+			error_without_free();
 		i++;
 	}
 }
@@ -50,15 +50,15 @@ int	space_null_control(char *str)
 	}
 	return (0);
 }
-
-void	main_helper(t_stack *data)
+#include <stdio.h>
+void	helper(t_stack *data)
 {
 	data->numbers = ft_split(data->str, ' ');
-	check_numbers(data);
-	edit_stacks(data);
-	repeat_numbers(data);
-	sort_control(data);
-	selection_sort(data);
+	check_numbers(data); // Sayı + - dışında bir şey var mı? Control
+	edit_stacks(data); // Sayıları a ve sort stack doldurma
+	repeat_numbers(data); // Tekrarlayan sayı var mı? Control
+	sort_control(data); // Sıralı mı? Control
+	selection_sort(data); // Sorted Sıralama.
 	distribute_arg(data);
 	ft_free(data);
 }
@@ -82,18 +82,15 @@ int	main(int argc, char **argv)
 	int		i;
 	t_stack	*data;
 
+	if (argc < 2)
+		exit(EXIT_FAILURE);
 	argv_control(argv);
 	i = 1;
-	if (argc < 2)
-		exit(0);
-	else
-	{
-		data = malloc(sizeof(t_stack));
-		data->ac = argc - 1;
-		data->str = argv[1];
-		while (data->ac >= ++i)
-			ft_argv_together(data, argv[i]);
-		main_helper(data);
-	}
+	data = malloc(sizeof(t_stack));
+	data->ac = argc - 1;
+	data->str = argv[1];
+	while (data->ac >= ++i)
+		ft_argv_together(data, argv[i]);
+	helper(data);
 	return (0);
 }

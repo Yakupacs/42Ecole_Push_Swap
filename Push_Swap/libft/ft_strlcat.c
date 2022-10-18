@@ -5,28 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:44:53 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:44:54 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:46:30 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:46:31 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+size_t	ft_strlcat(char *dest, const char *src, size_t dstsize)
 {
-	size_t	s;
-	size_t	d;
+	size_t	i;
+	size_t	srclen;
+	size_t	destlen;
 
-	d = 0;
-	s = 0;
-	while (dst[d] && (d < size))
-		d++;
-	while (src[s] && d + s + 1 < size)
+	srclen = ft_strlen(src);
+	if (dstsize == 0)
+		return (srclen);
+	destlen = 0;
+	while (dest[destlen])
+		destlen++;
+	i = 0;
+	while (src[i] && destlen + i < (dstsize - 1))
 	{
-		dst[s + d] = src[s];
-		s++;
+		dest[i + destlen] = src[i];
+		i++;
 	}
-	if (d < size)
-		dst[d + s] = '\0';
-	return (d + ft_strlen(src));
+	if (i < dstsize)
+		dest[destlen + i] = '\0';
+	if (destlen > dstsize)
+		return (srclen + dstsize);
+	return (destlen + srclen);
 }

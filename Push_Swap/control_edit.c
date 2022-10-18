@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:42:29 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:42:32 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:43:22 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:43:22 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ void	edit_stacks(t_stack *data)
 		i++;
 	data->a_s = ft_calloc(i, sizeof(int));
 	data->b_s = ft_calloc(i, sizeof(int));
-	data->tmps = ft_calloc(i, sizeof(int));
+	data->sorted = ft_calloc(i, sizeof(int));
 	data->a_len = i;
 	data->len = data->a_len;
 	data->b_len = 0;
 	i = 0;
 	while (data->numbers[i])
 	{
-		data->a_s[i] = ft_atoip(data->numbers[i], data);
-		data->tmps[i] = ft_atoip(data->numbers[i], data);
+		data->a_s[i] = my_atoi(data->numbers[i], data);
+		data->sorted[i] = data->a_s[i];
 		i++;
 	}
 	data->ac = data->a_len;
@@ -66,7 +66,7 @@ void	repeat_numbers(t_stack *data)
 	int	j;
 
 	i = 0;
-	while (i < data->a_len)
+	while (i < data->a_len - 1)
 	{
 		j = i + 1;
 		while (j < data->a_len)
@@ -93,5 +93,5 @@ void	sort_control(t_stack *data)
 		i++;
 	}
 	if (count == data->len)
-		exit(1);
+		exit(EXIT_SUCCESS);
 }

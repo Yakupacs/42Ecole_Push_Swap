@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:44:49 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:44:51 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:46:26 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:46:27 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *s1, char const *s2)
 {
 	char	*r_str;
 	size_t	i;

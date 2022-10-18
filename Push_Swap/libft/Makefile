@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/16 20:45:34 by yacis@stude       #+#    #+#              #
-#    Updated: 2022/10/16 20:45:36 by yacis@stude      ###   ########.fr        #
+#    Created: 2022/10/17 17:47:15 by yacis@stude       #+#    #+#              #
+#    Updated: 2022/10/17 17:47:16 by yacis@stude      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,30 +24,30 @@ OBJS = $(SRCS:.c=.o)
 BONUS	=	ft_lstnew.c ft_lstadd_front.c ft_lstsize.c \
 				ft_lstlast.c ft_lstadd_back.c \
 				ft_lstdelone.c ft_lstclear.c \
-				ft_lstiter.c
+				ft_lstiter.c ft_lstmap.c
 
 BONUS_OBJS	= $(BONUS:.c=.o)
 
-CC	=	@gcc
+CC	=	gcc
 RM	=	rm -f
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -Wall -Wextra -Werror -I.
 
 $(NAME): 
-		@$(CC) $(FLAGS) -c $(SRCS) 
-		@ar rc $(NAME) $(OBJS)
+		@$(CC) $(FLAGS) -c $(SRCS)
+		@ar rcs $(NAME) $(OBJS)
 
 all: $(NAME)
 
 bonus:
 		$(CC) $(FLAGS) -c $(BONUS)
-		ar rc $(NAME) $(BONUS_OBJS)
+		ar rcs $(NAME) $(BONUS_OBJS)
 
 clean:
-		$(RM) $(OBJS) 
-		$(RM) $(BONUS_OBJS)
+		@$(RM) $(OBJS)
+		@$(RM) $(BONUS_OBJS)
 
 fclean: clean
-		$(RM) $(NAME)
+		@$(RM) $(NAME)
 
 re: fclean all
 

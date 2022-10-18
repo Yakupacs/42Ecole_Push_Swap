@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:45:23 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:45:24 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:47:03 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:47:04 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int	ft_tolower(int c)
 {
 	if (c >= 'A' && c <= 'Z')
-		c += 32;
+		return (c + 32);
 	return (c);
 }

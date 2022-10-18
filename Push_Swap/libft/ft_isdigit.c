@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:43:54 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:55 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:43:59 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:44:00 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_isdigit(int c)
 {
-	if ('0' <= c && c <= '9')
-		return (1);
-	return (0);
+	return (c >= '0' && c <= '9');
 }

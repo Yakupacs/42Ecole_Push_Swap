@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:43:57 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:43:59 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:44:02 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:44:03 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 int	ft_isprint(int c)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	return (c >= 32 && c < 127);
 }

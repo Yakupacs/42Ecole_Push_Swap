@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/16 20:45:40 by yacis@stude       #+#    #+#              #
-#    Updated: 2022/10/16 20:45:41 by yacis@stude      ###   ########.fr        #
+#    Created: 2022/10/17 17:43:10 by yacis@stude       #+#    #+#              #
+#    Updated: 2022/10/17 17:43:10 by yacis@stude      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ RED		=	\033[31m
 
 NAME = push_swap
 
-SRCS =  main.c rotate_swap_func.c rotate_rev_func.c push_func.c control_edit.c selection_sort.c three_five.c radix.c free.c ft_atoip.c
+SRCS =  main.c stack_func1.c stack_func2.c  control_edit.c utils.c \
+		three_five.c radix.c free.c
+
 OBJS = $(SRCS:.c=.o)
 
 CC = @gcc -ggdb
@@ -35,16 +37,16 @@ $(MFLAGS):
 	@make -C ./libft
 
 $(NAME): $(OBJS)
-	@echo "$(YELLOW)>- 🦚Compiling...🦚 [$(NAME)] $(RESET)"
+	@echo "$(GREEN)>- 🌊Compiling...🌊 [$(NAME)] $(RESET)"
 	@$(CC) $(OBJS) $(MFLAGS) $(CFLAGS) -o $(NAME)
-	@echo "$(YELLOW)>-🦚🦚🦚🦚🦚🦚Finish..🦚🦚🦚🦚🦚🦚🦚 [$(NAME)] $(RESET)"
+	@echo "$(GREEN)>-🌊🌊🌊🌊🌊Finish..🌊🌊🌊🌊🌊 [$(NAME)] $(RESET)"
 
 fclean : clean
-	@echo "$(RED)>- 🦚🦚🦚🦚🦚Deleting...🦚🦚🦚🦚🦚 [$(NAME)] $(RESET)"
+	@echo "$(RED)>- 🌊🌊🌊🌊🌊Deleting...🌊🌊🌊🌊🌊 [$(NAME)] $(RESET)"
 	@$(RM) ./libft/*.a
 	@$(RM) ./*.a
 	@$(RM) $(NAME)
-	@echo "$(RED)>- 🦚🦚🦚finish🦚🦚 [$(NAME)] $(RESET)"
+	@echo "$(RED)>- 🌊🌊🌊Finish..🌊🌊🌊 [$(NAME)] $(RESET)"
 
 clean :
 	@$(RM) ./libft/*.o

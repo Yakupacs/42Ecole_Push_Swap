@@ -5,32 +5,18 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yacis@student.42istanbul.com.tr <yacis>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 20:42:56 by yacis@stude       #+#    #+#             */
-/*   Updated: 2022/10/16 20:42:56 by yacis@stude      ###   ########.fr       */
+/*   Created: 2022/10/17 17:43:02 by yacis@stude       #+#    #+#             */
+/*   Updated: 2022/10/17 17:43:02 by yacis@stude      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_index(t_stack *data, int nbr)
-{
-	int	i;
-
-	i = -1;
-	while (++i < data->len)
-	{
-		if (data->tmps[i] == nbr)
-		{
-			return (i);
-		}
-	}
-	return (0);
-}
-
-void	radix(t_stack *data)
+void	find_maxbit(t_stack *data)
 {
 	int	max;
 
+	data->max_bit = 0;
 	max = data->a_len - 1;
 	while (max > 0)
 	{
@@ -39,7 +25,21 @@ void	radix(t_stack *data)
 	}
 }
 
-void	radix_2(t_stack *data)
+int	find_index(t_stack *data, int nbr)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->len)
+	{
+		if (data->sorted[i] == nbr)
+			return (i);
+		i++;
+	}
+	return (0);
+}
+
+void	radix(t_stack *data)
 {
 	int	i;
 	int	x;
